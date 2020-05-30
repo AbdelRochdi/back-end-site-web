@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if (isset($_SESSION['id'])) {
+    $fname = $_SESSION['fname'];
+    $lname = $_SESSION['lname'];
+
+    $full_name = $fname . " " . $lname;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,40 +46,7 @@
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">The Perfect Cup</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="blog.html">Blog</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    <?php include 'nav.php' ?>
 
 
     <div class="container">
@@ -77,6 +54,7 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
+                <h2 class="text-center">Welcome <?php echo $full_name?> </h2>
                     <hr>
                     <h2 class="intro-text text-center">The Perfect Cup
                         <strong>blog</strong>
@@ -90,7 +68,7 @@
                         <small>October 13, 2013</small>
                     </h2>
                     <p>Start your morning off with this great recipe for hot coffee with coconut oil and butter.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>
                      <hr>
                 </div>
                 <div class="col-lg-12 text-center">
@@ -100,7 +78,7 @@
                         <small>October 13, 2013</small>
                     </h2>
                     <p>Take the edge off with a fresh hot cup of coffee make with Irish whiskey and Irish cream.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Read More</button>
                      <hr>
                 </div>
                 <div class="col-lg-12 text-center">
@@ -110,7 +88,8 @@
                         <small>October 13, 2013</small>
                     </h2>
                     <p>Sweetened with caramel sauce and topped with whipped cream, this will make you happy any time of the day.</p>
-                    <a href="#" class="btn btn-default btn-lg">Read More</a>
+                    
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Read More</button>
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
@@ -129,51 +108,57 @@
     <!--Modal-1-->
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-			<!--Modal Content-->
+            <!--Modal Content-->
+            <div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss-="modal">&times;</button>
 				<h4 class="modal-title">Coconut Oil Coffee</h4>
 			</div>
-			<div class="nodal-body">
+			<div class="modal-body">
 				<p>Sample Text</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
+            </div>
+            </div>
 		</div>
 	</div>
    
     <!--Modal-2-->
 	<div id="myModal2" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-			<!--Modal Content-->
+            <!--Modal Content-->
+            <div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss-="modal">&times;</button>
 				<h4 class="modal-title">Irish Coffee</h4>
 			</div>
-			<div class="nodal-body">
+			<div class="modal-body">
 				<p>Sample Text</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
+            </div>
+            </div>
 		</div>
 	</div>
    
     <!--Modal-3-->
 	<div id="myModal3" class="modal fade" role="dialog">
 		<div class="modal-dialog">
-			<!--Modal Content-->
+            <!--Modal Content-->
+            <div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss-="modal">&times;</button>
 				<h4 class="modal-title">Frozen Caramel Latte</h4>
 			</div>
-			<div class="nodal-body">
+			<div class="modal-body">
 				<p>Sample Text</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
+            </div>
+            </div>
 		</div>
 	</div>
     <footer>
@@ -195,3 +180,11 @@
 </body>
 
 </html>
+<?php
+
+}
+else {
+    header("location:login.php");
+}
+
+?>
