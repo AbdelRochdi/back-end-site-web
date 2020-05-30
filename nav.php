@@ -1,6 +1,6 @@
-<?php include "db.php" ?>
-<?php ob_start() ?>
-<?php session_start() ?>
+<?php include "db.php"; ?>
+<?php ob_start(); ?>
+<?php session_start(); ?>
 
 
 <nav class="navbar navbar-default" role="navigation">
@@ -35,7 +35,7 @@
                     <?php 
                         
                         if (isset($_SESSION['id'])) {
-                            
+
                             echo "<li>";
                             echo "<a href='logout.php'>Logout</a>";
                             echo "</li>";
@@ -53,12 +53,7 @@
                         }
                     
                     ?>
-                    <li>
-                        
-                    </li>
-                    <li>
-                        
-                    </li>
+                   
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

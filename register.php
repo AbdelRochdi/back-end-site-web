@@ -1,4 +1,4 @@
-<?php session_start() ?>
+
 
 
 <!DOCTYPE html>
@@ -139,7 +139,7 @@
                         </div>
                     </form>
                     <div class="form-group col-lg-12">
-                                <a href = "login.php" id="register" class="btn btn-default">Already a member ? login here</a>
+                                <a href = "login.php" id="register" class="btn btn-default">Already a member? login here</a>
                             </div>
                 </div>
             </div>
