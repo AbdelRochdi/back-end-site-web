@@ -110,37 +110,59 @@ if (isset($_SESSION['id'])) {
                     </h2>
                     <hr>
                 </div>
+                <?php 
+                            $query = "SELECT * FROM products";
+                            $load_products_query = mysqli_query($connection,$query);
+
+                            if (!$load_products_query) {
+                                die("QUERY FAILED". mysqli_error($connection));
+                            }
+
+                            while ($row = mysqli_fetch_array($load_products_query)) {
+                                $product_id = $row['product_id'];
+                                $product_title = $row['product_title'];
+                                $product_image = $row['product_image'];
+                                $product_desc = $row['product_desc'];
+                                $product_info = $row['product_info'];
+                                $product_date = $row['product_date'];
+
+                                ?>
+                        
                 <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-1.jpg" alt="">
-                    <h2>COCONUT OIL COFFEE
+                    <img class="img-responsive img-border img-full" src="img/<?php echo $product_image ?>" alt="<?php echo $product_image ?>">
+                    <h2><?php echo $product_title ?>
                         <br>
-                        <small>October 13, 2013</small>
+                        <small><?php echo $product_date ?></small>
                     </h2>
-                    <p>Start your morning off with this great recipe for hot coffee with coconut oil and butter.</p>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Read More</button>
+                    <p><?php echo $product_desc ?>.</p>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $product_id ?>">Read More</button>
                      <hr>
                 </div>
-                <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-2.jpg" alt="">
-                    <h2>IRISH COFFEE
-                        <br>
-                        <small>October 13, 2013</small>
-                    </h2>
-                    <p>Take the edge off with a fresh hot cup of coffee make with Irish whiskey and Irish cream.</p>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Read More</button>
-                     <hr>
-                </div>
-                <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-3.jpg" alt="">
-                    <h2>FROZEN CARAMEL LATTE
-                        <br>
-                        <small>October 13, 2013</small>
-                    </h2>
-                    <p>Sweetened with caramel sauce and topped with whipped cream, this will make you happy any time of the day.</p>
-                    
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Read More</button>
-                    <hr>
-                </div>
+                 <!--Modal-1-->
+	<div id="myModal<?php echo $product_id ?>" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+            <!--Modal Content-->
+            <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss-="modal">&times;</button>
+				<h4 class="modal-title"><?php echo $product_title ?></h4>
+			</div>
+			<div class="modal-body">
+				<p><?php echo $product_info ?></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+		</div>
+	</div>
+                        <?php
+                            }
+
+                            
+
+                        ?>
+                
                 <div class="col-lg-12 text-center">
                     <ul class="pager">
                         <li class="previous"><a href="#">&larr; Older</a>
@@ -154,62 +176,8 @@ if (isset($_SESSION['id'])) {
 
     </div>
     <!--container -->
-    <!--Modal-1-->
-	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-            <!--Modal Content-->
-            <div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss-="modal">&times;</button>
-				<h4 class="modal-title">Coconut Oil Coffee</h4>
-			</div>
-			<div class="modal-body">
-				<p>Sample Text</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-		</div>
-	</div>
    
-    <!--Modal-2-->
-	<div id="myModal2" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-            <!--Modal Content-->
-            <div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss-="modal">&times;</button>
-				<h4 class="modal-title">Irish Coffee</h4>
-			</div>
-			<div class="modal-body">
-				<p>Sample Text</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-		</div>
-	</div>
    
-    <!--Modal-3-->
-	<div id="myModal3" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-            <!--Modal Content-->
-            <div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss-="modal">&times;</button>
-				<h4 class="modal-title">Frozen Caramel Latte</h4>
-			</div>
-			<div class="modal-body">
-				<p>Sample Text</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-		</div>
-	</div>
     <footer>
         <div class="container">
             <div class="row">
