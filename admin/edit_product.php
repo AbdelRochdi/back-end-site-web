@@ -14,6 +14,7 @@ $p_title = $row['product_title'];
 $p_image = $row['product_image'];
 $p_desc = $row['product_desc'];
 $p_info = $row['product_info'];
+$p_price = $row['product_price'];
 }
 
 if (isset($_POST['edit_product'])) {
@@ -22,6 +23,7 @@ if (isset($_POST['edit_product'])) {
     $product_image_temp = $_FILES['image']['tmp_name'];
     $product_desc = $_POST['product_desc'];
     $product_info = $_POST['product_info'];
+    $product_price = $_POST['product_price'];
 
     move_uploaded_file($product_image_temp, "../img/$product_image");
 
@@ -30,12 +32,14 @@ if (isset($_POST['edit_product'])) {
     $product_desc = mysqli_real_escape_string($connection,$product_desc);
     $product_info = mysqli_real_escape_string($connection,$product_info);
 
-    $query = "UPDATE products SET product_title = '$product_title' ,product_image ='$product_image', product_desc = '$product_desc', product_info = '$product_info'  WHERE product_id = $p_id ";
+    $query = "UPDATE products SET product_title = '$product_title' ,product_image ='$product_image', product_desc = '$product_desc', product_info = '$product_info', product_price = '$product_price'  WHERE product_id = $p_id ";
     $edit_product_query = mysqli_query($connection,$query);
 
     if (!$edit_product_query) {
         die("QUERY FAILED". mysqli_error($connection));
     }
+
+    
 }
 
 ?>
@@ -85,6 +89,11 @@ if (isset($_POST['edit_product'])) {
                     <div class="form-group">
                         <label for="product_info">Product Infos</label>
                         <textarea class="form-control" name="product_info" id="" cols="30" rows="5"><?php echo $p_info ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product_price">Product Price</label>
+                        <input type="number" value = "<?php echo $p_price ?>" class="form-control" name="product_price">
                     </div>
                     
                     

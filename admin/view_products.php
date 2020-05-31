@@ -25,6 +25,7 @@
                         <th>Image</th>
                         <th>Description</th>
                         <th>Info</th>
+                        <th>Price</th>
                         <th>Date</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -46,6 +47,7 @@
                                 $product_image = $row['product_image'];
                                 $product_desc = $row['product_desc'];
                                 $product_info = $row['product_info'];
+                                $product_price = $row['product_price'];
                                 $product_date = $row['product_date'];
 
 
@@ -55,6 +57,7 @@
                                 echo "<td>$product_image</td>";
                                 echo "<td>$product_desc</td>";
                                 echo "<td>$product_info</td>";
+                                echo "<td>$product_price</td>";
                                 echo "<td>$product_date</td>";
                                 echo "<td> <a href='edit_product.php?edit=$product_id'>Edit</a></td>";
                                 echo "<td><a href='view_products.php?delete=$product_id'>Delete</a></td>";

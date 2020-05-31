@@ -7,6 +7,7 @@ if (isset($_POST['add_product'])) {
     $product_image_temp = $_FILES['image']['tmp_name'];
     $product_desc = $_POST['product_desc'];
     $product_info = $_POST['product_info'];
+    $product_price = $_POST['product_price'];
 
     move_uploaded_file($product_image_temp, "../img/$product_image");
 
@@ -15,7 +16,7 @@ if (isset($_POST['add_product'])) {
     $product_desc = mysqli_real_escape_string($connection,$product_desc);
     $product_info = mysqli_real_escape_string($connection,$product_info);
 
-    $query = "INSERT INTO products(product_title,product_image,product_desc,product_info) VALUES ('$product_title','$product_image','$product_desc','$product_info')";
+    $query = "INSERT INTO products(product_title,product_image,product_desc,product_info,product_price) VALUES ('$product_title','$product_image','$product_desc','$product_info',$product_price)";
     $add_product_query = mysqli_query($connection,$query);
 
     if (!$add_product_query) {
@@ -75,6 +76,11 @@ if (isset($_POST['add_product'])) {
                         <label for="product_info">Product Infos</label>
                         <textarea class="form-control "name="product_info" id="" cols="30" rows="5">
                         </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product_price">Product Price</label>
+                        <input type="number" class="form-control" name="product_price">
                     </div>
                     
                     

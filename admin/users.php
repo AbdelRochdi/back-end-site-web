@@ -43,16 +43,11 @@
                                 $user_lname = $row['lname'];
                                 $user_email = $row['email'];
                                 
-                                
-
-
                                 echo "<tr>";
                                 echo "<td>$user_id</td>";
                                 echo "<td>$user_fname</td>";
                                 echo "<td>$user_lname</td>";
-                                echo "<td>$user_email</td>";
-                                
-                                
+                                echo "<td>$user_email</td>";                               
                                 echo "<td><a href='users.php?delete=$user_id'>Delete</a></td>";
                                 echo "</tr>";
                             }
@@ -76,7 +71,5 @@
 
             </div>
             <!-- /.container-fluid -->
-
-        
 
     <?php include "admin_footer.php" ?>
