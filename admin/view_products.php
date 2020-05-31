@@ -26,7 +26,6 @@
                         <th>Description</th>
                         <th>Info</th>
                         <th>Date</th>
-                        <th>View Post</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -57,6 +56,8 @@
                                 echo "<td>$product_desc</td>";
                                 echo "<td>$product_info</td>";
                                 echo "<td>$product_date</td>";
+                                echo "<td> <a href=''>Edit</a></td>";
+                                echo "<td><a href=''>Delete</a></td>";
                                 echo "</tr>";
                             }
 
