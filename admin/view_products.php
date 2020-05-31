@@ -56,12 +56,19 @@
                                 echo "<td>$product_desc</td>";
                                 echo "<td>$product_info</td>";
                                 echo "<td>$product_date</td>";
-                                echo "<td> <a href=''>Edit</a></td>";
-                                echo "<td><a href=''>Delete</a></td>";
+                                echo "<td> <a href='edit_product.php?edit=$product_id'>Edit</a></td>";
+                                echo "<td><a href='view_products.php?delete=$product_id'>Delete</a></td>";
                                 echo "</tr>";
                             }
 
-                            
+                            if (isset($_GET['delete'])) {
+                                $deleted_product_id = $_GET['delete'];
+
+                                $delete_query = "DELETE FROM products WHERE product_id = $deleted_product_id";
+                                $deleted_product_query = mysqli_query($connection,$delete_query);
+
+                                header('Location: view_products.php');
+                            }
 
                         ?>
 

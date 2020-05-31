@@ -158,9 +158,6 @@ if (isset($_SESSION['id'])) {
 	</div>
                         <?php
                             }
-
-                            
-
                         ?>
                 
                 <div class="col-lg-12 text-center">
