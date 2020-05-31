@@ -54,7 +54,7 @@
                                 echo "<tr>";
                                 echo "<td>$product_id</td>";
                                 echo "<td>$product_title</td>";
-                                echo "<td>$product_image</td>";
+                                echo "<td><img class= 'img-responsive' src='../img/$product_image' alt=''></td>";
                                 echo "<td>$product_desc</td>";
                                 echo "<td>$product_info</td>";
                                 echo "<td>$product_price</td>";
