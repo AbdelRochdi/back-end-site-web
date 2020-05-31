@@ -37,6 +37,11 @@
                         if (isset($_SESSION['id'])) {
 
                             echo "<li>";
+                            echo "<a href='admin'>Admin</a>";
+                            echo "</li>";
+
+
+                            echo "<li>";
                             echo "<a href='logout.php'>Logout</a>";
                             echo "</li>";
 
@@ -53,6 +58,7 @@
                         }
                     
                     ?>
+                    
                    
                 </ul>
             </div>
