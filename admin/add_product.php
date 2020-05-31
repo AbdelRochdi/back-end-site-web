@@ -7,6 +7,11 @@ if (isset($_POST['add_product'])) {
     $product_desc = $_POST['product_desc'];
     $product_info = $_POST['product_info'];
 
+    $product_title = mysqli_real_escape_string($product_title);
+    $product_image = mysqli_real_escape_string($product_image);
+    $product_desc = mysqli_real_escape_string($product_desc);
+    $product_info = mysqli_real_escape_string($product_info);
+
     $query = "INSERT INTO products(product_title,product_image,product_desc,product_info) VALUES ('$product_title','$product_image','$product_desc','$product_info')";
     $add_product_query = mysqli_query($connection,$query);
 
