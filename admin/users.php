@@ -53,10 +53,18 @@
                                 echo "<td>$user_email</td>";
                                 
                                 
-                                echo "<td><a href=''>Delete</a></td>";
+                                echo "<td><a href='users.php?delete=$user_id'>Delete</a></td>";
                                 echo "</tr>";
                             }
+                            
+                            if (isset($_GET['delete'])) {
+                                $deleted_user_id = $_GET['delete'];
 
+                                $delete_query = "DELETE FROM members WHERE id = $deleted_user_id";
+                                $deleted_user_query = mysqli_query($connection,$delete_query);
+
+                                header('Location: users.php');
+                            }
                             
 
                         ?>
